@@ -43,6 +43,28 @@ export const products =[
         gender:"Female",
         brand:"LIBAS",
         size:"m"
+    },
+    {
+        id:"1238",
+        name:"Men Slim Fit Printed Casual Shirt",
+        imgUrl:"https://rukminim1.flixcart.com/image/800/960/kjlrb0w0-0/shirt/e/9/e/39-assfqmopa15662-allen-solly-original-imafz4wpwpwr4njp.jpeg?q=50",
+        sellingPrice:"899",
+        costPrice:"1,499",
+        offer:"40% off",
+        gender:"Male",
+        brand:"Allen Solly",
+        size:"m"
+    },
+    {
+        id:"1239",
+        name:"Men Slim Fit Checkered Spread Collar Casual Shirt",
+        imgUrl:"https://rukminim1.flixcart.com/image/800/960/kosxzm80/shirt/o/8/y/38-assfqspb791663-allen-solly-original-imag36bh3fyf6wtu.jpeg?q=50",
+        sellingPrice:"980",
+        costPrice:"1,999",
+        offer:"50% off",
+        gender:"Male",
+        brand:"Allen Solly",
+        size:"m"
     }
 ]
 

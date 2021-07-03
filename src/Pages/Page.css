@@ -11,10 +11,12 @@
     height:100vh;
 }
 .card-wrapper{
-    width:70%;
+    width:90%;
     margin-left: 2rem;
     background-color:var(--background-color);
     overflow-y: scroll;
     display:flex;
     column-gap:1rem;
+    flex-wrap: wrap;
+    padding-bottom: 10rem;
 }
