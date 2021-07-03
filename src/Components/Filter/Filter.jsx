@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { useProduct } from '../../Context/Product'
+import './Filter.css'
 
 export const Filter = () => {
     const [priceFilter, setPriceFilter] = useState({
@@ -9,7 +10,8 @@ export const Filter = () => {
     const [brandFilter,setBrandFilter] = useState({
         allenSolly:false,
         beingHuman:false,
-        peterEngland:false
+        peterEngland:false,
+        libas:false
     })
     const [sizeFilter,setSizeFilter] = useState({
         s:false,
@@ -39,7 +41,9 @@ export const Filter = () => {
             setBrandFilter(()=>{
                 return { allenSolly:false,
                 beingHuman:false,
-                peterEngland:true}
+                peterEngland:true,
+                libas:false
+            }
             })
      
         }else if(action === "Being human"){
@@ -48,7 +52,18 @@ export const Filter = () => {
             setBrandFilter(()=>{
                 return { allenSolly:false,
                 beingHuman:true,
-                peterEngland:false}
+                peterEngland:false,
+                libas:false}
+            })
+        }
+        else if(action ==="LIBAS"){
+            productDispatch({ type: "RESET" })
+            productDispatch({ type: "SORT-BY-BRAND",payload:"LIBAS" })
+            setBrandFilter(()=>{
+                return { allenSolly:false,
+                beingHuman:false,
+                peterEngland:false,
+                libas:true}
             })
         }
         else{
@@ -57,7 +72,8 @@ export const Filter = () => {
             setBrandFilter(()=>{
                 return { allenSolly:true,
                 beingHuman:false,
-                peterEngland:false}
+                peterEngland:false,
+                libas:false}
             })
         }
     }
@@ -116,28 +132,28 @@ export const Filter = () => {
     return (
         <div className="filter">
             <button onClick={clearFilter}>Clear Filter</button>
-            <div className="price-filter">
-            
                 <h2>Price Filter</h2>
-                <input type="radio" onChange={() =>filterAction("HIGH-TO-LOW") } checked={priceFilter.high} name="" id="" />
-                <input type="radio" onChange={() => filterAction("LOW-TO-HIGH")}  checked={priceFilter.low} name="" id="" />
+            <div className="price-filter">
+               <span><label for="HIGH">High to low</label> <input type="radio" id="HIGH" onChange={() =>filterAction("HIGH-TO-LOW") } checked={priceFilter.high} name="" id="" /></span>
+               <span><label for="LOW">low to High</label> <input type="radio" id="LOW" onChange={() => filterAction("LOW-TO-HIGH")}  checked={priceFilter.low} name="" id="" /></span>
             </div>
-            <div className="brand">
                 <h2>Brand Filter</h2>
-                <input type="radio" onChange={()=>brandFilterAction("Allen Solly")} checked = {brandFilter.allenSolly} name="" id="" />
-                <input type="radio" onChange={()=>brandFilterAction("Being human")} checked = {brandFilter.beingHuman} name="" id="" />
-                <input type="radio" onChange={()=>brandFilterAction("Peter England")} checked = {brandFilter.peterEngland} name="" id="" />
+            <div className="brand">
+                <span><label for="AS">Allen Solly</label><input type="radio" id="AS" onChange={()=>brandFilterAction("Allen Solly")} checked = {brandFilter.allenSolly} name="" id="" /></span>
+                <span><label for="BH">Being human</label><input type="radio" id="BH" onChange={()=>brandFilterAction("Being human")} checked = {brandFilter.beingHuman} name="" id="" /></span>
+                <span><label for="PE">Peter England</label><input type="radio" id="PE" onChange={()=>brandFilterAction("Peter England")} checked = {brandFilter.peterEngland} name="" id="" /></span>
+                <span><label for="LB">LIBAS</label><input type="radio" id="LB" onChange={()=>brandFilterAction("LIBAS")} checked = {brandFilter.libas} name="" id="" /></span>
             </div>
-            <div className="gender">
                 <h2>Gender Filter</h2>
-                <input type="radio" onChange={()=>genderFilterAction("M")} checked={genderFilter.m} name="" id="" />
-                <input type="radio" name="" onChange={()=>genderFilterAction("F")} checked={genderFilter.f} id="" />
+            <div className="gender">
+                <span><label for="M">Female</label><input type="radio" id="M" onChange={()=>genderFilterAction("M")} checked={genderFilter.m} name="" id="" /></span>
+                <span><label for="F">Male</label><input type="radio" id="F" name="" onChange={()=>genderFilterAction("F")} checked={genderFilter.f} id="" /></span>
             </div>
-            <div className="size">
                 <h2>Size Filter</h2>
-                <input type="radio" onChange={()=>sizeFilterAction("M")} checked={sizeFilter.m} name="" id="" />
-                <input type="radio" onChange={()=>sizeFilterAction("S")} checked={sizeFilter.s} name="" id="" />
-                <input type="radio" onChange={()=>sizeFilterAction("XL")} checked={sizeFilter.xl} name="" id="" />
+            <div className="size">
+                <span><label for="Medium">Medium</label><input type="radio" id="Medium" onChange={()=>sizeFilterAction("M")} checked={sizeFilter.m} name="" id="" /></span>
+                <span><label for="Small">Small</label><input type="radio" id="Small" onChange={()=>sizeFilterAction("S")} checked={sizeFilter.s} name="" id="" /></span>
+                <span><label for="XL">Extra Large</label><input type="radio" id="XL" onChange={()=>sizeFilterAction("XL")} checked={sizeFilter.xl} name="" id="" /></span>
             </div>
 
         </div>
